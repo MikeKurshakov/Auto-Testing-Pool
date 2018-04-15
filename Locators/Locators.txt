@@ -1,0 +1,29 @@
+1 css=img.onliner_log
+//a[@href='https://www.onliner.by/']/img[@alt='Onliner']
+
+2 css=input.search__input
+//form[@action='//catalog.onliner.by/search/']/input[@name='query']
+
+3 css=.b-top-navigation li .b-main-navigation__text
+//div[@id='container']/div/div[2]/header/div/div/nav/ul/li[3]/a/span
+
+4 css=.b-main-navigation .b-main-navigation__item .b-main-navigation__text
+//div[@id='container']/div/div[2]/header/div/div/nav/ul/li[7]/a/span
+
+5 css= .schema-filter__fieldset li .schema-filter__checkbox-text
+//div[@id='schema-filter']/div/div[3]/div[2]/ul/li[2]/label/span[2]
+
+6 css=div.schema-product__title > a > span
+//div[@class='schema-product__part schema-product__part_2']/div[@class='schema-product__part schema-product__part_4']/div[@class='schema-product__title']
+
+7 css=[data-bind] .schema-filter__fieldset li .schema-filter__checkbox-text
+//div[7]/div[3]/ul/li[3]/label/span[2]
+
+8 css= li .schema-filter__checkbox-text
+//div[8]/div[3]/ul/li/label/span[2]
+
+9 css=div.schema-filter-collapse__item.schema-filter-collapse__item_opened > div.schema-filter-collapse__body > div.schema-filter__facet > div.schema-filter-control.schema-filter-control_more > div.schema-filter-control__item
+//div[5]/div/div/div/div[2]/div/div/div
+
+10 css= .schema-filter__fieldset .schema-filter-control_input .schema-filter__number-input
+//div[1]/input[@class='schema-filter-control__item schema-filter__number-input schema-filter__number-input_price']
