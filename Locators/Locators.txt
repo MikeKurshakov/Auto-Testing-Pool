@@ -26,4 +26,4 @@
 //div[5]/div/div/div/div[2]/div/div/div
 
 10 css= .schema-filter__fieldset .schema-filter-control_input .schema-filter__number-input
-//div[1]/input[@class='schema-filter-control__item schema-filter__number-input schema-filter__number-input_price']
+//div[1]/input[@class='schema-filter-control__item schema-filter__number-input schema-filter__number-input_price'] 
