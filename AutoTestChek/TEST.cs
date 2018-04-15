@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -20,18 +21,6 @@ namespace AutoTestChek
         public class Test
         {
             public static IWebDriver driver;
-
-        [OneTimeSetUp] // вызывается перед началом запуска всех тестов
-            public void OneTimeSetUp()
-            {
-                // ТУТ КОД
-            }
-
-            [OneTimeTearDown] //вызывается после завершения всех тестов
-            public void OneTimeTearDown()
-            {
-                // ТУТ КОД
-            }
 
             [SetUp] // вызывается перед каждым тестом
             public void SetUp()
@@ -77,7 +66,7 @@ namespace AutoTestChek
                 Assert.AreEqual(driver.Title, "Косметичні кисті | ціни, купити в інтернет-магазині | Hotline");
         }
             [Test]
-            public void TEST_FiltrationChek()
+            public void TEST_FiltrationCosmeticChek()
             {
 
                 driver.FindElement(By.ClassName("close")).Click();
@@ -90,15 +79,42 @@ namespace AutoTestChek
                 driver.FindElement(By.XPath("//div[@class='nowrap m_b-lg']/input[1]")).SendKeys("0");
                 driver.FindElement(By.XPath("//div[@class='nowrap m_b-lg']/input[3]")).SendKeys(Keys.Control + "a");
                 driver.FindElement(By.XPath("//div[@class='nowrap m_b-lg']/input[3]")).SendKeys("2500");
+                //Для закрытия случайно появившегося блока рекламы(не всегда он появляется)
                 try
                 {
-                 driver.FindElement(By.ClassName("close")).Click();
+                driver.FindElement(By.Id("close")).Click();
                 }
                 catch {}
                 driver.FindElement(By.XPath("//div[@class='nowrap m_b-lg']/input[5]")).Click();
                 driver.FindElement(By.XPath("//div[@class='item-bd'][@data-filters-id='filters-gr-104598']/ul/li[3]")).Click();
                 Assert.LessOrEqual(Int32.Parse((driver.FindElement(By.XPath("//div[@class='price-md']/span[1]/span[1]")).Text)),2500);  
         }
+            [Test]
+        public void TEST_FiltrationSnowboardsChek()
+            {
+
+                driver.FindElement(By.ClassName("close")).Click();
+                driver.FindElement(By.CssSelector(".cell-sm-none [data-language='uk']")).Click();
+                driver.FindElement(By.LinkText("Спорт, Активний відпочинок")).Click();
+                driver.FindElement(By.CssSelector("[data-dropdown-target='-1077'] > span:nth-of-type(1)")).Click();
+                Thread.Sleep(2000);
+                driver.FindElement(By.LinkText("Сноуборди")).Click();
+                //Для закрытия случайно появившегося блока рекламы(не всегда он появляется)
+                try
+                {
+                    driver.FindElement(By.Id("close")).Click();
+            }
+                catch { }
+                driver.FindElement(By.CssSelector(".sorting-in > [data-sortbox='select']:nth-child(1) .field")).Click();
+                driver.FindElement(By.XPath("//select[@class='field']/option[@value='0']")).Click();
+                //Для закрытия случайно появившегося блока рекламы(не всегда он появляется)
+                try
+                {
+                    driver.FindElement(By.Id("close")).Click();
+                }
+                catch { }
+                Assert.LessOrEqual(int.Parse(driver.FindElement(By.XPath("//div[@class='price-md'][1]/span[1]/span[1]")).Text, NumberStyles.AllowThousands), int.Parse(driver.FindElement(By.XPath("//div[@class='price-md']/span[1]/span[1]")).Text, NumberStyles.AllowThousands));
+            }
 
     }
 }
